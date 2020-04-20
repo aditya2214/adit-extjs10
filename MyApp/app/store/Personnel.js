@@ -1,7 +1,15 @@
+var item=15;
 Ext.define('MyApp.store.Personnel', {
     extend: 'Ext.data.Store',
     
     alias: 'store.personnel',
+    
+
+    // requires: [
+    //     'Ext.data.proxy.Ajax',
+    //     'Ext.data.reader.Json'
+    // ],
+
     autoLoad:true,
 
     autoSync : true, // untuk memastikan, frontend sama backend sync selalu.. kasih tahhu yang lain dit
@@ -10,21 +18,20 @@ Ext.define('MyApp.store.Personnel', {
         'id','nama','birthplace','birthday', 'created_at', 'updated_at',
     ],
 
- 
+    pageSize:item,
 
     proxy: {
-        type: 'jsonp',
-        api:{
-            read: "http://localhost/extjs_latihan/php/read.php",
-            update: "http://localhost/extjs_latihan/php/update.php",
-            destroy: "http://localhost/extjs_latihan/php/destroy.php",
-            create: "http://localhost/extjs_latihan/php/create.php",
-            
-            
-        },
+        type: 'rest',
+        url: 'http://localhost/Belajar_Laravel/public/api/employess',
         reader: {
             type: 'json',
-            rootProperty: 'items'
+            rootProperty: 'data'
         }
     }
 });
+// store.load({
+//     params:{
+//         start:0,
+//         limit:item
+//     }
+// });

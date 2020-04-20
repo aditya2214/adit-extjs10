@@ -20,6 +20,7 @@ Ext.define('MyApp.view.main.Main', {
 
     controller: 'main',
     viewModel: 'main',
+    plugins:'viewport',
 
     ui: 'navigation',
 
@@ -37,7 +38,13 @@ Ext.define('MyApp.view.main.Main', {
             },
             flex: 0
         },
-        iconCls: 'fa-th-list'
+        // iconCls: 'fa-th-list',
+        items: [{
+            xtype: 'button',
+            text: 'Logout',
+            margin: '10 0',
+            handler: 'onClickButton'
+        }]
     },
 
     tabBar: {
@@ -76,26 +83,26 @@ Ext.define('MyApp.view.main.Main', {
 
     items: [{
         title: 'Home',
-        iconCls: 'fa-home',
+        // iconCls: 'fa-home',
         // The following grid shares a store with the classic version's grid as well!
         items: [{
             xtype: 'mainlist'
         }]
     }, {
         title: 'Users',
-        iconCls: 'fa-user',
+        // iconCls: 'fa-user',
         bind: {
             html: '{loremIpsum}'
         }
     }, {
         title: 'Groups',
-        iconCls: 'fa-users',
+        // iconCls: 'fa-users',
         bind: {
             html: '{loremIpsum}'
         }
     }, {
         title: 'Settings',
-        iconCls: 'fa-cog',
+        // iconCls: 'fa-cog',
         bind: {
             html: '{loremIpsum}'
         }

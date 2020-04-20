@@ -8,6 +8,7 @@ Ext.define('MyApp.view.main.MainController', {
     extend: 'Ext.app.ViewController',
 
     alias: 'controller.main',
+    
 
     onItemSelected: function (sender, record) {
       
@@ -16,6 +17,7 @@ Ext.define('MyApp.view.main.MainController', {
     //   console.log(button);
     //   return;
       button.enable(true)
+      
     },
 
     onRemoveClick:function(button,grid,rowIndex,colIndex) {
@@ -29,9 +31,9 @@ Ext.define('MyApp.view.main.MainController', {
             var grid = button.up('mainlist');
             var model =grid.getStore().getAt(rowIndex);
 
-            if(!model){
-                Ext.Msg.alert('info','no record selected');
-            }
+            // if(!model){
+            //     Ext.Msg.alert('info','no record selected');
+            // }
             // console.log({model})
 
             Ext.Msg.confirm('Remove record','are you sure want to delete?',
@@ -58,13 +60,14 @@ Ext.define('MyApp.view.main.MainController', {
         let rowediting=list.getPlugin();
         
         store.setAutoSync(false);
-        for (i=1;i<=10;i++);
-
+        
         var record = {
             
             nama:"",
             birthplace:"",
             birthday:"",
+            created_at:Date(),
+            updated_at:Date(),
         }
 
         // console.log(store)e
@@ -75,6 +78,19 @@ Ext.define('MyApp.view.main.MainController', {
         store.setAutoSync(true);
 
     },
+
+    onClickButton: function () {
+       
+        localStorage.removeItem('TutorialLoggedIn');
+
+        
+        this.getView().destroy();
+
+        
+        Ext.create({
+            xtype: 'login'
+        });
+    }
 
     
 });

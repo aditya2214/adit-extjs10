@@ -21,7 +21,7 @@
     $error = 'no error';
 
     $output = array();
-    $query="update employess set nama='$nama', birthplace='$birthplace',birthday='$birthday',created_at='$created_at',updated_at='$updated_at' where id=$id";
+   
     if ($conn->query($query)===TRUE){
         $success = 'true';
     }
